@@ -1,0 +1,9 @@
+obj/
+obj*/
+*.log
+*.log
+*.bin
+*.obj
+*.dll
+*.exe
+*.lib
