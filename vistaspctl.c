@@ -160,11 +160,11 @@ BOOL ControlSlService(BOOL bStart, BOOL bIsWin7)
 
 VOID __cdecl main(__in ULONG argc, __in_ecount(argc) PCHAR argv[])
 {
-    HANDLE hDevice = INVALID_HANDLE_VALUE;
-    BOOL bReturn = FALSE;
-    ULONG uBytesReturned = 0;
+	HANDLE hDevice = INVALID_HANDLE_VALUE;
+	BOOL bReturn = FALSE;
+	ULONG uBytesReturned = 0;
 	CHAR cIsRunning = 0;
-    DWORD dwReturnCode = 0;
+	DWORD dwReturnCode = 0;
 	DWORD dwMode = 0; // 0 - check, 1 - stop, 2 - start, 3 - start service
 	DWORD dwWinVer = GetVersion();
 
@@ -207,7 +207,7 @@ VOID __cdecl main(__in ULONG argc, __in_ecount(argc) PCHAR argv[])
 	}
 
 	// open spldr's SpDevice
-    if ((hDevice = CreateFile("\\\\.\\SpDevice", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL)) == INVALID_HANDLE_VALUE)
+	if ((hDevice = CreateFile("\\\\.\\SpDevice", GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL)) == INVALID_HANDLE_VALUE)
 	{
 		DWORD dwErrorCode = GetLastError();
 		if (dwErrorCode != 0 && dwErrorCode > 0)
@@ -226,12 +226,12 @@ VOID __cdecl main(__in ULONG argc, __in_ecount(argc) PCHAR argv[])
 	}
 
 	// check if SpSys is running
-    bReturn = DeviceIoControl(hDevice, SPLDR_IOCTL_GET_DRIVER_STATUS, NULL, 0, &cIsRunning, sizeof(cIsRunning), &uBytesReturned, NULL);
-    if (!bReturn)
-    {
-        printf("Error: Status check failed: %d\n", GetLastError());
-        return;
-    }
+	bReturn = DeviceIoControl(hDevice, SPLDR_IOCTL_GET_DRIVER_STATUS, NULL, 0, &cIsRunning, sizeof(cIsRunning), &uBytesReturned, NULL);
+	if (!bReturn)
+	{
+		printf("Error: Status check failed: %d\n", GetLastError());
+		return;
+	}
 
 	// print the result
 	if (cIsRunning != 0)
@@ -339,8 +339,8 @@ VOID __cdecl main(__in ULONG argc, __in_ecount(argc) PCHAR argv[])
 		}
 	}
 
-    // close the device handle
-    CloseHandle(hDevice);
+	// close the device handle
+	CloseHandle(hDevice);
 	
 	return;
 }

@@ -31,7 +31,7 @@ IOCTLs:
   Device: \\.\SpDevice
   Driver: spldr.sys
   
-  SPLDR_IOCTL_GET_DRIVE_STATUS = 0x80006008
+  SPLDR_IOCTL_GET_DRIVER_STATUS = 0x80006008
     Input buffer: NULL
     Output buffer: 1 byte, returns a byte that is 0x1 if running, 0x0 if not.
     Permissions: GENERIC_READ
